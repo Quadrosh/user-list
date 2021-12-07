@@ -28,6 +28,6 @@ build-bin:
 	go build -o build/api/bin  cmd/api/main.go
 
 # ==============================================================================
-# build
+# run bin file
 run-bin:
 	build/api/bin   -dbhost=localhost -dbport=5432 -dbname=userlist -dbuser=postgres -dbpass=password  -port=8000 

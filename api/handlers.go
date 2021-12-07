@@ -24,6 +24,7 @@ func NewHandler(service user.ServiceInterface) Handler {
 	return &handler{userService: service}
 }
 
+// Greate handles create request and calls the Create function of user service interface
 func (h *handler) Create(w http.ResponseWriter, r *http.Request) {
 	var user user.User
 	err := json.NewDecoder(r.Body).Decode(&user)
@@ -48,7 +49,7 @@ type propValueRequest struct {
 	Value    interface{} `json:"value"`
 }
 
-// Find handles request to /find address
+// Find handles request to /find address, calls Find function of user service interface
 func (h *handler) Find(w http.ResponseWriter, r *http.Request) {
 	var req propValueRequest
 	err := json.NewDecoder(r.Body).Decode(&req)
@@ -84,7 +85,7 @@ type filterResponse struct {
 	Sum   int         `json:"sum"`
 }
 
-// Filter handles reguest for users by specific age and recording date diapazons
+// Filter handles reguest for users by specific age and recording date diapazons, calls Filter function of user service interface
 func (h *handler) Filter(w http.ResponseWriter, r *http.Request) {
 	var req filterRequest
 	err := json.NewDecoder(r.Body).Decode(&req)

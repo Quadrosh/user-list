@@ -18,9 +18,9 @@ type postgresRepository struct {
 func ConnectPostgres(dbHost, dbPort, dbUser, dbName, dbPass string) (user.RepoInterface, error) {
 	repo := postgresRepository{}
 	connectionString :=
-	fmt.Sprintf("host=%s port=%s user=%s password=%s dbname=%s sslmode=disable", dbHost, dbPort, dbUser, dbPass, dbName)
+		fmt.Sprintf("host=%s port=%s user=%s password=%s dbname=%s sslmode=disable", dbHost, dbPort, dbUser, dbPass, dbName)
 
-	log.Println("connectionString: ",connectionString)
+	log.Println("connectionString: ", connectionString)
 
 	var err error
 	repo.DB, err = sql.Open("postgres", connectionString)
@@ -43,8 +43,7 @@ func pingDB(d *sql.DB) error {
 	return nil
 }
 
-
-// CreateUserTableIfNotExists creates users table for local environnent, 
+// CreateUserTableIfNotExists creates users table for local environnent,
 // in Docker db and table creates file /database/create_fixture.sql
 func (m *postgresRepository) CreateUserTableIfNotExists() error {
 
@@ -276,7 +275,6 @@ func (m *postgresRepository) FilterUsersByRange(dateFrom, dateTo, ageFrom, ageTo
 	defer cancel()
 	var users []user.User
 
-	// i := 1
 	query := `	
 		SELECT
 			id,

@@ -84,5 +84,4 @@ func (r *service) Filter(dateFrom, dateTo, ageFrom, ageTo int) ([]User, int, err
 
 	return users, len(users), err
 
-	// return nil, nil
 }
